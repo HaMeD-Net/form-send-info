@@ -5,12 +5,13 @@ import { Form, Input, Button, Checkbox, Row, Col, Select } from "antd";
 const { Option } = Select;
 
 export default function Login() {
-  const { info,setinfo } = useContext(myContext);
+  const { info, setinfo, lastData, setLastData } = useContext(myContext);
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-    setinfo(values);
-    console.log(info)
+    console.log(values);
+    const usersList = [...info, values];
+    setLastData(values);
+    setinfo(usersList);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -23,7 +24,7 @@ export default function Login() {
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
+          initialValues={lastData}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"

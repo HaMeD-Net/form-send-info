@@ -5,6 +5,7 @@ import { myContext } from "../Context/context";
 
 export default function ShowForm() {
   const { info } = useContext(myContext);
+  console.log(info);
 
   const columns = [
     {
@@ -20,7 +21,7 @@ export default function ShowForm() {
     },
     {
       title: "Type of User",
-      dataIndex: "Type of User",
+      dataIndex: "type of user",
       key: "Type of User",
     },
     {
@@ -35,10 +36,9 @@ export default function ShowForm() {
     },
   ];
 
-  const data = null;
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={info} />
     </div>
   );
 }
